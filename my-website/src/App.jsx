@@ -21,7 +21,7 @@ function App() {
         </nav>
 
         <div className="hero-content">
-          <p className="eyebrow">Destin • 30A • Panama City Beach</p>
+          <p className="eyebrow">Destin • 30A • Rosemary • Seaside • Panama City Beach</p>
           <h1>Luxury Beach Bonfire Experiences on the Emerald Coast</h1>
           <p className="hero-text">
             We create unforgettable beach bonfire nights with full setup,
@@ -42,6 +42,9 @@ function App() {
               Badass Bonfires creates curated beach bonfire setups for couples,
               families, friend groups, birthdays, bachelorettes, and special
               celebrations across the Florida panhandle.
+            </p>
+            <p className="eyebrow">
+              Licensed • Insured • Satisfaction Guaranteed
             </p>
           </div>
         </section>
