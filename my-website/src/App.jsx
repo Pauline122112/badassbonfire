@@ -1,5 +1,4 @@
-import "./App.css"
-import bonfireVideo from "./assets/Badassbonfire_1Photo.mp4"
+import "./App.css";
 
 function Navbar() {
   return (
@@ -12,25 +11,20 @@ function Navbar() {
         <button className="nav-cta">Book Now</button>
       </div>
     </nav>
-  )
+  );
 }
 
 function Hero() {
   return (
     <main className="hero">
-      <video className="hero-video" autoPlay muted loop playsInline>
-        <source src={bonfireVideo} type="video/mp4" />
-      </video>
-
       <div className="overlay"></div>
-
       <div className="hero-content">
         <h1>Luxury Beach Bonfire Experiences</h1>
         <p>On the Emerald Coast</p>
         <button className="cta floating">Book Your Experience</button>
       </div>
     </main>
-  )
+  );
 }
 
 function WhyUs() {
@@ -48,7 +42,7 @@ function WhyUs() {
         <div>Premium Experience</div>
       </div>
     </section>
-  )
+  );
 }
 
 function App() {
@@ -58,7 +52,7 @@ function App() {
       <Hero />
       <WhyUs />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
