@@ -1,0 +1,64 @@
+export default function Services() {
+  return (
+    <section id="services" className="packages-section">
+      <div className="packages-container">
+        <p className="section-eyebrow">Services</p>
+        <h2>Choose Your Beach Bonfire Experience</h2>
+        <p className="section-intro">
+          From cozy evenings to larger group gatherings, we create styled beach
+          bonfire setups that are ready when you arrive.
+        </p>
+
+        <div className="packages-grid">
+          <div className="package-card">
+            <img src="/bonfire-1.jpg" alt="Cozy Bonfire" />
+            <div className="package-content">
+              <div className="package-price">$429</div>
+              <h3>The Cozy Bonfire</h3>
+              <p>Up to 6 chairs</p>
+              <a href="#contact" className="package-button">
+                Check Availability
+              </a>
+            </div>
+          </div>
+
+          <div className="package-card featured-package">
+            <img src="/BadassBon1.png" alt="Sunset Circle" />
+            <div className="package-content">
+              <div className="package-price">$529</div>
+              <h3>The Sunset Circle</h3>
+              <p>Up to 12 chairs</p>
+              <a href="#contact" className="package-button">
+                Check Availability
+              </a>
+            </div>
+          </div>
+
+          <div className="package-card">
+            <img src="/bonfire-1.jpg" alt="Shoreline Social" />
+            <div className="package-content">
+              <div className="package-price">$729</div>
+              <h3>The Shoreline Social</h3>
+              <p>Up to 20 chairs</p>
+              <a href="#contact" className="package-button">
+                Check Availability
+              </a>
+            </div>
+          </div>
+
+          <div className="package-card">
+            <img src="/BadassBon1.png" alt="Bonfire Bash" />
+            <div className="package-content">
+              <div className="package-price">$829</div>
+              <h3>The Bonfire Bash</h3>
+              <p>Up to 29 chairs</p>
+              <a href="#contact" className="package-button">
+                Check Availability
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

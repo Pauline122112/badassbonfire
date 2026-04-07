@@ -1,4 +1,5 @@
-import "./App.css";
+import "./App.css"
+import Services from "./components/Services"
 
 function Navbar() {
   return (
@@ -35,7 +36,7 @@ export default function App() {
 
       {/* SECTIONS BELOW */}
       <section id="about">About section</section>
-      <section id="services">Services section</section>
+     <Services />
       <section id="gallery">Gallery section</section>
       <section id="reviews">Reviews section</section>
       <section id="contact">Contact section</section>
