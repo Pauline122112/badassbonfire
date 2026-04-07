@@ -16,17 +16,27 @@ function Navbar() {
 
 export default function App() {
   return (
-    <main className="hero">
-      <img src="/BadassBon1.png" alt="Beach bonfire" className="hero-bg" />
-      <div className="overlay"></div>
+    <div>
+      {/* HERO */}
+      <main className="hero">
+        <img src="/BadassBon1.png" alt="Beach bonfire" className="hero-bg" />
+        <div className="overlay"></div>
 
-      <Navbar />
+        <Navbar />
 
-      <div className="hero-content">
-        <h1>Luxury Beach Bonfire Experiences</h1>
-        <p>On the Emerald Coast</p>
-        <button>Book Your Experience</button>
-      </div>
-    </main>
+        <div className="hero-content">
+          <h1>Luxury Beach Bonfire Experiences</h1>
+          <p>On the Emerald Coast</p>
+          <button>Book Your Experience</button>
+        </div>
+      </main>
+
+      {/* SECTIONS BELOW */}
+      <section id="about">About section</section>
+      <section id="services">Services section</section>
+      <section id="gallery">Gallery section</section>
+      <section id="reviews">Reviews section</section>
+      <section id="contact">Contact section</section>
+    </div>
   );
 }
