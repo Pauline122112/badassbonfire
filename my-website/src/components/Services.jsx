@@ -11,7 +11,7 @@ export default function Services() {
 
         <div className="packages-grid">
           <div className="package-card">
-            <img src="/bonfire-1.jpg" alt="Cozy Bonfire" />
+            <img src="/BadassBon1.png" alt="bonfire" />
             <div className="package-content">
               <div className="package-price">$429</div>
               <h3>The Cozy Bonfire</h3>
@@ -23,7 +23,7 @@ export default function Services() {
           </div>
 
           <div className="package-card featured-package">
-            <img src="/BadassBon1.png" alt="Sunset Circle" />
+            <img src="/BadassBon1.png" alt="bonfire" />
             <div className="package-content">
               <div className="package-price">$529</div>
               <h3>The Sunset Circle</h3>
@@ -35,7 +35,7 @@ export default function Services() {
           </div>
 
           <div className="package-card">
-            <img src="/bonfire-1.jpg" alt="Shoreline Social" />
+            <img src="/BadassBon1.png" alt="bonfire" />
             <div className="package-content">
               <div className="package-price">$729</div>
               <h3>The Shoreline Social</h3>
@@ -47,7 +47,7 @@ export default function Services() {
           </div>
 
           <div className="package-card">
-            <img src="/BadassBon1.png" alt="Bonfire Bash" />
+            <img src="/BadassBon1.png" alt="bonfire" />
             <div className="package-content">
               <div className="package-price">$829</div>
               <h3>The Bonfire Bash</h3>

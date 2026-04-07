@@ -1,5 +1,5 @@
-import "./App.css"
-import Services from "./components/Services"
+import "./App.css";
+import Services from "./components/Services";
 
 function Navbar() {
   return (
@@ -7,10 +7,10 @@ function Navbar() {
       <div className="logo">Badass Bonfires</div>
       <div className="nav-links">
         <a href="#about">About</a>
-<a href="#services">Services</a>
-<a href="#gallery">Gallery</a>
-<a href="#reviews">Reviews</a>
-<a href="#contact">Contact</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
         <button className="nav-cta">Book Now</button>
       </div>
     </nav>
@@ -20,13 +20,10 @@ function Navbar() {
 export default function App() {
   return (
     <div>
-      {/* HERO */}
       <main className="hero">
         <img src="/BadassBon1.png" alt="Beach bonfire" className="hero-bg" />
         <div className="overlay"></div>
-
         <Navbar />
-
         <div className="hero-content">
           <h1>Luxury Beach Bonfire Experiences</h1>
           <p>On the Emerald Coast</p>
@@ -34,9 +31,8 @@ export default function App() {
         </div>
       </main>
 
-      {/* SECTIONS BELOW */}
       <section id="about">About section</section>
-     <Services />
+      <Services />
       <section id="gallery">Gallery section</section>
       <section id="reviews">Reviews section</section>
       <section id="contact">Contact section</section>
