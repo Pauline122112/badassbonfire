@@ -17,11 +17,25 @@ function Navbar() {
 function Hero() {
   return (
     <main className="hero">
+      <video
+        className="hero-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+      >
+        <source
+          src="https://videos.pexels.com/video-files/857195/857195-hd_1920_1080_25fps.mp4"
+          type="video/mp4"
+        />
+      </video>
+
       <div className="overlay"></div>
+
       <div className="hero-content">
         <h1>Luxury Beach Bonfire Experiences</h1>
         <p>On the Emerald Coast</p>
-        <button className="cta floating">Book Your Experience</button>
+        <button className="cta">Book Your Experience</button>
       </div>
     </main>
   );

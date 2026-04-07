@@ -67,11 +67,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: black;
 }
 .hero-video {
   position: absolute;
@@ -85,7 +81,7 @@ body {
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.18);
+  background: rgba(0, 0, 0, 0.28);
   z-index: 1;
 }
 
