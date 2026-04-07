@@ -1,4 +1,3 @@
-import "./App.css";
 import Services from "./components/Services";
 
 function Navbar() {
@@ -21,10 +20,17 @@ function Navbar() {
 export default function App() {
   return (
     <div className="site-shell">
+      
       <main className="hero">
-        <img src="/BadassBon1.png" alt="Beach bonfire" className="hero-bg" />
+        <img
+          src="/BadassBon1.png"
+          alt="Beach bonfire"
+          className="hero-bg"
+        />
+
         <div className="overlay"></div>
 
+        {/* NAVBAR goes here */}
         <Navbar />
 
         <div className="hero-content">
@@ -37,9 +43,7 @@ export default function App() {
       <section className="content-section" id="about">
         <div className="section-card">
           <h2>About</h2>
-          <p>
-            Styled beach bonfires designed for unforgettable nights on the Emerald Coast.
-          </p>
+          <p>Styled beach bonfires designed for unforgettable nights.</p>
         </div>
       </section>
 
@@ -49,26 +53,6 @@ export default function App() {
         </div>
       </section>
 
-      <section className="content-section" id="gallery">
-        <div className="section-card">
-          <h2>Gallery</h2>
-          <p>Photos coming soon.</p>
-        </div>
-      </section>
-
-      <section className="content-section" id="reviews">
-        <div className="section-card">
-          <h2>Reviews</h2>
-          <p>Client reviews coming soon.</p>
-        </div>
-      </section>
-
-      <section className="content-section" id="contact">
-        <div className="section-card">
-          <h2>Contact</h2>
-          <p>Reach out to book your beach bonfire experience.</p>
-        </div>
-      </section>
     </div>
   );
 }
