@@ -5,9 +5,11 @@ function Navbar() {
     <nav className="navbar">
       <div className="logo">Badass Bonfires</div>
       <div className="nav-links">
-        <a href="#">Experiences</a>
-        <a href="#">Gallery</a>
-        <a href="#">Contact</a>
+        <a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#gallery">Gallery</a>
+<a href="#reviews">Reviews</a>
+<a href="#contact">Contact</a>
         <button className="nav-cta">Book Now</button>
       </div>
     </nav>
