@@ -5,6 +5,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="logo">Badass Bonfires</div>
+
       <div className="nav-links">
         <a href="#about">About</a>
         <a href="#services">Services</a>
@@ -19,23 +20,55 @@ function Navbar() {
 
 export default function App() {
   return (
-    <div>
+    <div className="site-shell">
       <main className="hero">
         <img src="/BadassBon1.png" alt="Beach bonfire" className="hero-bg" />
         <div className="overlay"></div>
+
         <Navbar />
+
         <div className="hero-content">
           <h1>Luxury Beach Bonfire Experiences</h1>
           <p>On the Emerald Coast</p>
-          <button>Book Your Experience</button>
+          <button className="hero-btn">Book Your Experience</button>
         </div>
       </main>
 
-      <section id="about">About section</section>
-      <Services />
-      <section id="gallery">Gallery section</section>
-      <section id="reviews">Reviews section</section>
-      <section id="contact">Contact section</section>
+      <section className="content-section" id="about">
+        <div className="section-card">
+          <h2>About</h2>
+          <p>
+            Styled beach bonfires designed for unforgettable nights on the Emerald Coast.
+          </p>
+        </div>
+      </section>
+
+      <section className="content-section" id="services">
+        <div className="section-card">
+          <Services />
+        </div>
+      </section>
+
+      <section className="content-section" id="gallery">
+        <div className="section-card">
+          <h2>Gallery</h2>
+          <p>Photos coming soon.</p>
+        </div>
+      </section>
+
+      <section className="content-section" id="reviews">
+        <div className="section-card">
+          <h2>Reviews</h2>
+          <p>Client reviews coming soon.</p>
+        </div>
+      </section>
+
+      <section className="content-section" id="contact">
+        <div className="section-card">
+          <h2>Contact</h2>
+          <p>Reach out to book your beach bonfire experience.</p>
+        </div>
+      </section>
     </div>
   );
 }
