@@ -1,3 +1,5 @@
+import "./App.css";
+
 function Navbar() {
   return (
     <nav className="navbar">
@@ -12,11 +14,12 @@ function Navbar() {
   );
 }
 
-function Hero() {
+export default function App() {
   return (
     <main className="hero">
       <img src="/BadassBon1.png" alt="Beach bonfire" className="hero-bg" />
       <div className="overlay"></div>
+
       <Navbar />
 
       <div className="hero-content">
@@ -26,8 +29,4 @@ function Hero() {
       </div>
     </main>
   );
-}
-
-export default function App() {
-  return <Hero />;
 }
