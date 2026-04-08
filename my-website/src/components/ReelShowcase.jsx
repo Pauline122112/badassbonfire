@@ -41,7 +41,7 @@ export default function ReelShowcase() {
                 />
               </div>
               <p className="reel-title">{reel.title}</p>
-            </div>325
+            </div>
           ))}
         </div>
       </div>

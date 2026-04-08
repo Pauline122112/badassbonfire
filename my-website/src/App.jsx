@@ -40,7 +40,7 @@ export default function App() {
         <Navbar onOpenBooking={() => setIsBookingOpen(true)} />
 
         <div className="hero-content">
-          <h1>Luxury Beach Bonfire Experience starting from </h1>
+          <h1>Luxury Beach Bonfire Experience starting from $325</h1>
           <p>On the Emerald Coast</p>
           <button
             className="hero-btn"
@@ -50,15 +50,6 @@ export default function App() {
           </button>
         </div>
       </main>
-
-          <ReelShowcase />
-
-      <section className="content-section" id="about">
-        <div className="section-card">
-          <h2>About</h2>
-          <p>Styled beach bonfires designed for unforgettable nights.</p>
-        </div>
-      </section>
 
       <Services onOpenBooking={() => setIsBookingOpen(true)} />
 
@@ -79,6 +70,26 @@ export default function App() {
         isOpen={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}
       />
+      <ReelShowcase />
+
+      <section className="content-section" id="gallery">
+  <div className="section-card">
+    <p className="section-eyebrow">Explore the Details</p>
+    <h2>Gallery</h2>
+    <p className="reel-intro">
+      From intimate setups to larger gatherings, every detail is styled for a seamless experience.
+    </p>
+
+    {/* your image grid goes here */}
+  </div>
+</section>
+
+      <section className="content-section" id="about">
+        <div className="section-card">
+          <h2>About</h2>
+          <p>Styled beach bonfires designed for unforgettable nights.</p>
+        </div>
+      </section>
     </div>
 
     
