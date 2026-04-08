@@ -6,7 +6,12 @@ export default function BookingModal({ isOpen, onClose }) {
   return (
     <div className="booking-modal-overlay" onClick={onClose}>
       <div className="booking-modal" onClick={(e) => e.stopPropagation()}>
-        <button className="booking-close" onClick={onClose} aria-label="Close">
+        <button
+          type="button"
+          className="booking-close"
+          onClick={onClose}
+          aria-label="Close"
+        >
           ×
         </button>
 
@@ -18,6 +23,10 @@ export default function BookingModal({ isOpen, onClose }) {
         </p>
 
         <BookingForm />
+
+        <a href="tel:8507061325" className="call-button">
+          Call Now Instead
+        </a>
       </div>
     </div>
   );
