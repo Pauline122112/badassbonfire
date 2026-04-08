@@ -1,4 +1,4 @@
-export default function Services() {
+export default function Services({ onOpenBooking }) {
   return (
     <section id="services" className="packages-section">
       <div className="packages-container">
@@ -16,9 +16,9 @@ export default function Services() {
               <div className="package-price">$429</div>
               <h3>The Cozy Bonfire</h3>
               <p>Up to 6 chairs</p>
-              <a href="#contact" className="package-button">
+              <button className="package-button" onClick={onOpenBooking}>
                 Check Availability
-              </a>
+              </button>
             </div>
           </div>
 
@@ -28,9 +28,9 @@ export default function Services() {
               <div className="package-price">$529</div>
               <h3>The Sunset Circle</h3>
               <p>Up to 12 chairs</p>
-              <a href="#contact" className="package-button">
+              <button className="package-button" onClick={onOpenBooking}>
                 Check Availability
-              </a>
+              </button>
             </div>
           </div>
 
@@ -40,9 +40,9 @@ export default function Services() {
               <div className="package-price">$729</div>
               <h3>The Shoreline Social</h3>
               <p>Up to 20 chairs</p>
-              <a href="#contact" className="package-button">
+              <button className="package-button" onClick={onOpenBooking}>
                 Check Availability
-              </a>
+              </button>
             </div>
           </div>
 
@@ -52,9 +52,9 @@ export default function Services() {
               <div className="package-price">$829</div>
               <h3>The Bonfire Bash</h3>
               <p>Up to 29 chairs</p>
-              <a href="#contact" className="package-button">
+              <button className="package-button" onClick={onOpenBooking}>
                 Check Availability
-              </a>
+              </button>
             </div>
           </div>
         </div>

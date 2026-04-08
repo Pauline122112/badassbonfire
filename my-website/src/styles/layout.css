@@ -206,13 +206,15 @@
 
 .package-button {
     display: inline-block;
-    margin-top: 22px;
-    padding: 14px 22px;
-    border-radius: 999px;
-    background: white;
-    color: black;
-    text-decoration: none;
-    font-weight: 600;
+        margin-top: 22px;
+        padding: 14px 22px;
+        border-radius: 999px;
+        background: white;
+        color: black;
+        text-decoration: none;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
 }
 
 .featured-package {
@@ -251,5 +253,140 @@
 
     .section-card {
         padding: 24px;
+    }
+}
+
+/* Booking Modal Styles */
+.booking-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 9999;
+}
+
+.booking-modal {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #111;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    padding: 34px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+.booking-close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.booking-eyebrow {
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.8rem;
+    color: #d8b98b;
+}
+
+.booking-modal h2 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.05;
+}
+
+.booking-subtext {
+    margin: 16px 0 28px;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.7;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.booking-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.booking-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-field label {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.booking-field input,
+.booking-field select,
+.booking-field textarea {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #1a1a1a;
+    color: white;
+    border-radius: 16px;
+    padding: 14px 16px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.booking-field input:focus,
+.booking-field select:focus,
+.booking-field textarea:focus {
+    border-color: #d8b98b;
+}
+
+.booking-note {
+    margin-top: 4px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+}
+
+.booking-submit {
+    margin-top: 8px;
+    align-self: flex-start;
+    padding: 15px 24px;
+    border: none;
+    border-radius: 999px;
+    background: white;
+    color: black;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.booking-submit:hover {
+    background: #d8b98b;
+}
+
+@media (max-width: 700px) {
+    .booking-modal {
+        padding: 24px;
+    }
+
+    .booking-grid {
+        grid-template-columns: 1fr;
     }
 }
