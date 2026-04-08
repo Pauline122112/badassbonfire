@@ -1,8 +1,9 @@
-import { useState } from "react";
-import "./index.css";
-import Services from "./components/Services";
-import BookingModal from "./components/BookingModal";
-import BookingForm from "./components/BookingForm";
+import { useState } from "react"
+import "./index.css"
+import Services from "./components/Services"
+import BookingModal from "./components/BookingModal"
+import BookingForm from "./components/BookingForm"
+import ReelShowcase from "./components/ReelShowcase"
 
 function Navbar({ onOpenBooking }) {
   return (
@@ -49,6 +50,8 @@ export default function App() {
           </button>
         </div>
       </main>
+      
+          <ReelShowcase />
 
       <section className="content-section" id="about">
         <div className="section-card">
@@ -77,5 +80,7 @@ export default function App() {
         onClose={() => setIsBookingOpen(false)}
       />
     </div>
+
+    
   );
 }
