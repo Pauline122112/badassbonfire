@@ -39,7 +39,7 @@ export default function App() {
         <Navbar onOpenBooking={() => setIsBookingOpen(true)} />
 
         <div className="hero-content">
-          <h1>Luxury Beach Bonfire Experiences</h1>
+          <h1>Luxury Beach Bonfire Experience</h1>
           <p>On the Emerald Coast</p>
           <button
             className="hero-btn"
