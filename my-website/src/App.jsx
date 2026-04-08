@@ -4,6 +4,7 @@ import Services from "./components/Services"
 import BookingModal from "./components/BookingModal"
 import BookingForm from "./components/BookingForm"
 import ReelShowcase from "./components/ReelShowcase"
+import Gallery from "./components/Gallery"
 
 function Navbar({ onOpenBooking }) {
   return (
@@ -71,18 +72,7 @@ export default function App() {
         onClose={() => setIsBookingOpen(false)}
       />
       <ReelShowcase />
-
-      <section className="content-section" id="gallery">
-  <div className="section-card">
-    <p className="section-eyebrow">Explore the Details</p>
-    <h2>Gallery</h2>
-    <p className="reel-intro">
-      From intimate setups to larger gatherings, every detail is styled for a seamless experience.
-    </p>
-
-    {/* your image grid goes here */}
-  </div>
-</section>
+      <Gallery />
 
       <section className="content-section" id="about">
         <div className="section-card">
