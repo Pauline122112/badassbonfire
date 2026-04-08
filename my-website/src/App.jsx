@@ -40,7 +40,7 @@ export default function App() {
         <Navbar onOpenBooking={() => setIsBookingOpen(true)} />
 
         <div className="hero-content">
-          <h1>Luxury Beach Bonfire Experience</h1>
+          <h1>Luxury Beach Bonfire Experience starting from </h1>
           <p>On the Emerald Coast</p>
           <button
             className="hero-btn"
@@ -50,7 +50,7 @@ export default function App() {
           </button>
         </div>
       </main>
-      
+
           <ReelShowcase />
 
       <section className="content-section" id="about">
