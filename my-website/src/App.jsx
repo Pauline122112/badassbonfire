@@ -66,10 +66,10 @@ function HomePage() {
         </div>
       </main>
 
-      <ReelShowcase />
+      
 
       <Services onOpenBooking={() => setIsBookingOpen(true)} />
-
+<ReelShowcase />
       <section className="content-section" id="contact">
         <div className="section-card booking-section">
           <p className="booking-eyebrow">Reserve Your Date</p>
@@ -87,6 +87,8 @@ function HomePage() {
         isOpen={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}
       />
+
+      
 
       <section className="content-section" id="about">
         <div className="section-card">
