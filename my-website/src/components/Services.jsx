@@ -2,10 +2,36 @@ import { useState } from "react";
 
 export default function Services({ onOpenBooking }) {
   const [activeCard, setActiveCard] = useState(null);
+  const [dismissedCard, setDismissedCard] = useState(null);
 
   const toggleCard = (index) => {
+    setDismissedCard(null);
     setActiveCard((prev) => (prev === index ? null : index));
   };
+
+  const packages = [
+    {
+      price: "$325",
+      title: "Couples Burn",
+      chairs: "Up to 6 chairs",
+    },
+    {
+      price: "$425",
+      title: "Basic Bonfire",
+      chairs: "Up to 12 chairs",
+      featured: true,
+    },
+    {
+      price: "$525",
+      title: "Popular Bonfire",
+      chairs: "Up to 20 chairs",
+    },
+    {
+      price: "$625",
+      title: "Elite Bonfire",
+      chairs: "Up to 29 chairs",
+    },
+  ];
 
   return (
     <section id="services" className="packages-section">
@@ -18,27 +44,22 @@ export default function Services({ onOpenBooking }) {
         </p>
 
         <div className="packages-grid">
-          {[{
-            price: "$429",
-            title: "The Cozy Bonfire",
-            chairs: "Up to 6 chairs",
-          },{
-            price: "$529",
-            title: "The Sunset Circle",
-            chairs: "Up to 12 chairs",
-            featured: true,
-          },{
-            price: "$729",
-            title: "The Shoreline Social",
-            chairs: "Up to 20 chairs",
-          },{
-            price: "$829",
-            title: "The Bonfire Bash",
-            chairs: "Up to 29 chairs",
-          }].map((pkg, index) => (
+          {packages.map((pkg, index) => (
             <div
               key={pkg.title}
-              className={`package-card ${pkg.featured ? "featured-package" : ""} ${activeCard === index ? "active" : ""}`}
+              className={`package-card 
+                ${pkg.featured ? "featured-package" : ""} 
+                ${activeCard === index ? "active" : ""} 
+                ${dismissedCard === index ? "dismissed" : ""}`}
+              onMouseEnter={() => {
+                if (dismissedCard !== index) {
+                  setActiveCard(index);
+                }
+              }}
+              onMouseLeave={() => {
+                setActiveCard(null);
+                setDismissedCard(null);
+              }}
             >
               <img src="/BadassBon1.png" alt={pkg.title} />
 
@@ -65,8 +86,8 @@ export default function Services({ onOpenBooking }) {
                   onClick={(e) => {
                     e.stopPropagation();
                     setActiveCard(null);
+                    setDismissedCard(index);
                   }}
-                  aria-label="Close details"
                 >
                   ×
                 </button>
