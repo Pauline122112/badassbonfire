@@ -51,6 +51,7 @@ export default function App() {
           </button>
         </div>
       </main>
+      <ReelShowcase />
 
       <Services onOpenBooking={() => setIsBookingOpen(true)} />
 
@@ -71,7 +72,7 @@ export default function App() {
         isOpen={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}
       />
-      <ReelShowcase />
+      
       <Gallery />
 
       <section className="content-section" id="about">
