@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { Routes, Route } from "react-router-dom";
 import "./index.css";
 import Services from "./components/Services";
@@ -6,10 +6,23 @@ import BookingModal from "./components/BookingModal";
 import BookingForm from "./components/BookingForm";
 import ReelShowcase from "./components/ReelShowcase";
 import Gallery from "./components/Gallery";
+import { useEffect, useState } from "react";
 
 function Navbar({ onOpenBooking }) {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="logo">Badass Bonfires</div>
 
       <div className="nav-links">
