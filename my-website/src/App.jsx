@@ -1,10 +1,11 @@
-import { useState } from "react"
-import "./index.css"
-import Services from "./components/Services"
-import BookingModal from "./components/BookingModal"
-import BookingForm from "./components/BookingForm"
-import ReelShowcase from "./components/ReelShowcase"
-import Gallery from "./components/Gallery"
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import "./index.css";
+import Services from "./components/Services";
+import BookingModal from "./components/BookingModal";
+import BookingForm from "./components/BookingForm";
+import ReelShowcase from "./components/ReelShowcase";
+import Gallery from "./components/Gallery";
 
 function Navbar({ onOpenBooking }) {
   return (
@@ -14,7 +15,7 @@ function Navbar({ onOpenBooking }) {
       <div className="nav-links">
         <a href="#about">About</a>
         <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
+        <a href="/gallery">Gallery</a>
         <a href="#reviews">Reviews</a>
         <a href="#contact">Contact</a>
         <button className="nav-cta" onClick={onOpenBooking}>
@@ -25,7 +26,7 @@ function Navbar({ onOpenBooking }) {
   );
 }
 
-export default function App() {
+function HomePage() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   return (
@@ -51,6 +52,7 @@ export default function App() {
           </button>
         </div>
       </main>
+
       <ReelShowcase />
 
       <Services onOpenBooking={() => setIsBookingOpen(true)} />
@@ -72,8 +74,6 @@ export default function App() {
         isOpen={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}
       />
-      
-      <Gallery />
 
       <section className="content-section" id="about">
         <div className="section-card">
@@ -82,7 +82,18 @@ export default function App() {
         </div>
       </section>
     </div>
+  );
+}
 
-    
+function GalleryPage() {
+  return <Gallery />;
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/gallery" element={<GalleryPage />} />
+    </Routes>
   );
 }
