@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 
 function Navbar({ onOpenBooking }) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,24 +18,52 @@ function Navbar({ onOpenBooking }) {
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
+    <nav
+      className={`navbar ${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}
+    >
       <div className="logo">Badass Bonfires</div>
 
-      <div className="nav-links">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="/gallery">Gallery</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#contact">Contact</a>
-        <button className="nav-cta" onClick={onOpenBooking}>
-          Book Now
-        </button>
-      </div>
+      <button
+        className={`menu-toggle ${menuOpen ? "open" : ""}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle navigation menu"
+        aria-expanded={menuOpen}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </button>
+
+<div className={`nav-links ${menuOpen ? "open" : ""}`}>
+  <button
+    className="menu-close"
+    onClick={() => setMenuOpen(false)}
+    aria-label="Close navigation menu"
+  >
+    ×
+  </button>
+
+  <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+  <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+  <a href="/gallery" onClick={() => setMenuOpen(false)}>Gallery</a>
+  <a href="#reviews" onClick={() => setMenuOpen(false)}>Reviews</a>
+  <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+
+  <button
+    className="nav-cta"
+    onClick={() => {
+      setMenuOpen(false);
+      onOpenBooking();
+    }}
+  >
+    Book Now
+  </button>
+</div>
     </nav>
   );
 }
