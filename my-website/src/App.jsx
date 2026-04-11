@@ -69,7 +69,16 @@ function Navbar({ onOpenBooking }) {
 }
 
 function HomePage() {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false)
+  const [showTopButton, setShowTopButton] = useState(false)
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowTopButton(window.scrollY > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [])
 
   return (
     <div className="site-shell">
@@ -125,6 +134,13 @@ function HomePage() {
           <p>Styled beach bonfires designed for unforgettable nights.</p>
         </div>
       </section>
+      <button
+  className={`back-to-top ${showTopButton ? "show" : ""}`}
+  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+  aria-label="Back to top"
+>
+  ↑
+</button>
     </div>
   );
 }
