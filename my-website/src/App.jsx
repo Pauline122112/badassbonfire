@@ -40,13 +40,15 @@ function Navbar({ onOpenBooking }) {
       </button>
 
 <div className={`nav-links ${menuOpen ? "open" : ""}`}>
-  <button
-    className="menu-close"
-    onClick={() => setMenuOpen(false)}
-    aria-label="Close navigation menu"
-  >
-    ×
-  </button>
+  {menuOpen && (
+    <button
+      className="menu-close"
+      onClick={() => setMenuOpen(false)}
+      aria-label="Close navigation menu"
+    >
+      ×
+    </button>
+  )}
 
   <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
   <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>

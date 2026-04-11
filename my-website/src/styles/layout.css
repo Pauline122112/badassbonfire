@@ -608,6 +608,10 @@
     padding: 14px 36px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
+
+.menu-close {
+    display: none;
+}
 /*Hamburger Button & Menu start>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -730,43 +734,55 @@
         opacity: 0;
         pointer-events: none;
     }
-        .menu-close {
-            display: block;
-            position: fixed;
-            /* important change */
-            top: 20px;
-            right: 20px;
-            width: 44px;
-            height: 44px;
-    
-            border: none;
-            background: transparent;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-    
-            z-index: 3000;
-            /* must be ABOVE nav-links */
+                .menu-close {
+                    display: block;
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+        
+                    width: 48px;
+                    height: 48px;
+        
+                    border: none;
+                    border-radius: 50%;
+                    background: rgba(0, 0, 0, 0.6);
+                    /* 👈 add this */
+                    backdrop-filter: blur(6px);
+        
+                    color: white;
+                    font-size: 2rem;
+                    line-height: 1;
+                    cursor: pointer;
+        
+                    z-index: 9999;
+                    /* 👈 CRITICAL */
+                }
+
+        .menu-close:hover {
+            background: rgba(255, 255, 255, 0.15);
         }
+                
+                    .nav-links .menu-close {
+                        display: block;
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        width: 48px;
+                        height: 48px;
+                        border: none;
+                        border-radius: 50%;
+                        background: rgba(0, 0, 0, 0.6);
+                        backdrop-filter: blur(6px);
+                        color: white;
+                        font-size: 2rem;
+                        line-height: 1;
+                        cursor: pointer;
+                        z-index: 9999;
+                    }
+                
 }
 
 /* X marks the spot */
-.menu-close {
-    display: block;
-    position: fixed; /* important change */
-    top: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-
-    border: none;
-    background: transparent;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-
-    z-index: 3000; /* must be ABOVE nav-links */
-}
 
 @keyframes fadeInUp {
     to {
