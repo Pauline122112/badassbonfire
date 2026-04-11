@@ -131,7 +131,7 @@ function HomePage() {
       <section className="content-section" id="about">
         <div className="section-card">
           <h2>About</h2>
-          <p>Styled beach bonfires designed for unforgettable nights.</p>
+          <p>With a passion for creating unforgettable moments, we at Badass Bonfires are dedicated to providing top-notch beach experience in Destin and its neighboring areas. As a locally owned business, we take pride in offering a Satisfaction Guarantee to ensure every experience exceeds expectations. Our services, available by appointment, are designed to bring warmth and joy to your gatherings, making any occasion truly special. From cozy nights under the stars to lively celebrations with loved ones, we are committed to delivering exceptional service that you can rely on. Let us light up your events with our expertise and commitment to customer satisfaction.</p>
         </div>
       </section>
       <button
