@@ -578,7 +578,16 @@
     font-weight: 700;
     color: white;
     position: relative;
+    display: flex;
+    align-items: center;
     z-index: 2102;
+}
+
+.logo img {
+    height: 42px;
+    /* adjust size here */
+    width: auto;
+    display: block;
 }
 
 .nav-links {

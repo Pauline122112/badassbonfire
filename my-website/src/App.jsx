@@ -25,7 +25,9 @@ function Navbar({ onOpenBooking }) {
     <nav
       className={`navbar ${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}
     >
-      <div className="logo">Badass Bonfires</div>
+      <div className="logo">
+  <img src="/BadassLogo1.png" alt="Badass Bonfires logo" />
+</div>
 
       <button
         className={`menu-toggle ${menuOpen ? "open" : ""}`}
