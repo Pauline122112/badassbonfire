@@ -82,17 +82,29 @@
 }
 
 .section-card {
-    max-width: 1100px;
+    max-width: 900px;
     width: 100%;
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(8px);
     border-radius: 20px;
     padding: 40px;
     color: white;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .section-card h2 {
     text-align: center;
+}
+
+.section-card p {
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.section-card p:first-of-type {
+    font-size: 1.1rem;
 }
 
 .packages-section {

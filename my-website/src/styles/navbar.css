@@ -109,7 +109,7 @@
     background: white;
     transition: all 0.3s ease;
 }
-
+/*
 .menu-toggle.open span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
@@ -120,7 +120,7 @@
 
 .menu-toggle.open span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
-}
+}*/
 
 .menu-close {
     display: none;
@@ -203,6 +203,11 @@
         pointer-events: none;
     }
 
+        .navbar.menu-open .menu-toggle {
+            opacity: 0;
+            pointer-events: none;
+        }
+
     .menu-close {
         display: block;
         position: fixed;
@@ -212,8 +217,8 @@
         height: 48px;
         border: none;
         border-radius: 50%;
-        background: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(6px);
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(8px);
         color: white;
         font-size: 2rem;
         line-height: 1;
