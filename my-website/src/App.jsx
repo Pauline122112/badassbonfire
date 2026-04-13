@@ -1,16 +1,17 @@
 
-import { Routes, Route, Link } from "react-router-dom";
-import "./index.css";
-import Services from "./components/Services";
-import BookingModal from "./components/BookingModal";
-import BookingForm from "./components/BookingForm";
-import ReelShowcase from "./components/ReelShowcase";
-import Gallery from "./components/Gallery";
-import { useEffect, useState } from "react";
-import FAQ from "./components/FAQ";
-import ScrollToTop from "./components/ScrollToTop";
-import "./styles/layout.css";
-import "./styles/navbar.css";
+import { Routes, Route, Link } from "react-router-dom"
+import "./index.css"
+import Services from "./components/Services"
+import BookingModal from "./components/BookingModal"
+import BookingForm from "./components/BookingForm"
+import ReelShowcase from "./components/ReelShowcase"
+import Gallery from "./components/Gallery"
+import { useEffect, useState } from "react"
+import FAQ from "./components/FAQ"
+import ScrollToTop from "./components/ScrollToTop"
+import "./styles/layout.css"
+import "./styles/navbar.css"
+import FAQPreview from "./components/FAQPreview"
 
 
 function Navbar({ onOpenBooking }) {
@@ -119,15 +120,16 @@ function HomePage() {
       <section className="content-section" id="contact">
         <div className="section-card booking-section">
           <p className="booking-eyebrow">Reserve Your Date</p>
-          <h2>Check Availability</h2>
+            <h2>Check Availability</h2>
           <p className="booking-subtext">
             Choose your preferred details below and we’ll call or text to confirm
-            everything personally.
-          </p>
+            everything personally.</p>
+        <BookingForm />
 
-          <BookingForm />
-        </div>
-      </section>
+  </div>   {/* 👈 THIS WAS MISSING */}
+</section>
+
+<FAQPreview />
 
       <BookingModal
         isOpen={isBookingOpen}

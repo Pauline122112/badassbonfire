@@ -707,3 +707,52 @@
         font-size: 1.35rem;
     }
 }
+
+/* Mini FAQS on the scrolling page */
+
+.faq-preview {
+    padding: 100px 24px;
+    color: white;
+}
+
+.faq-preview-header {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.faq-preview-header h2 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.faq-preview-intro {
+    margin-top: 14px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.faq-preview-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    gap: 16px;
+}
+
+.faq-preview-footer {
+    text-align: center;
+    margin-top: 28px;
+}
+
+.faq-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 2px;
+    transition: opacity 0.25s ease;
+}
+
+.faq-link:hover {
+    opacity: 0.7;
+}
