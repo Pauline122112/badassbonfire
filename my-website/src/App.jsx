@@ -31,8 +31,8 @@ function Navbar({ onOpenBooking }) {
       className={`navbar ${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}
     >
       <div className="logo">
-  <img src="/BadassLogo1.png" alt="Badass Bonfires logo" />
-</div>
+        <img src="/BadassLogo1.png" alt="Badass Bonfires logo" />
+      </div>
 
       <button
         className={`menu-toggle ${menuOpen ? "open" : ""}`}
@@ -43,36 +43,35 @@ function Navbar({ onOpenBooking }) {
         <span></span>
         <span></span>
         <span></span>
-
       </button>
 
-<div className={`nav-links ${menuOpen ? "open" : ""}`}>
-  {menuOpen && (
-    <button
-      className="menu-close"
-      onClick={() => setMenuOpen(false)}
-      aria-label="Close navigation menu"
-    >
-      ×
-    </button>
-  )}
+      <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+        <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+        <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+        <Link to="/gallery" onClick={() => setMenuOpen(false)}>Gallery</Link>
+        <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+        <Link to="/faq" onClick={() => setMenuOpen(false)}>FAQ</Link>
 
-<a href="#about" onClick={() => setMenuOpen(false)}>About</a>
-<a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
-<Link to="/gallery" onClick={() => setMenuOpen(false)}>Gallery</Link>
-<a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
-<Link to="/faq" onClick={() => setMenuOpen(false)}>FAQ</Link>
+        <button
+          className="nav-cta"
+          onClick={() => {
+            setMenuOpen(false);
+            onOpenBooking();
+          }}
+        >
+          Book Now
+        </button>
+      </div>
 
-  <button
-    className="nav-cta"
-    onClick={() => {
-      setMenuOpen(false);
-      onOpenBooking();
-    }}
-  >
-    Book Now
-  </button>
-</div>
+      {menuOpen && (
+        <button
+          className="menu-close"
+          onClick={() => setMenuOpen(false)}
+          aria-label="Close navigation menu"
+        >
+          ×
+        </button>
+      )}
     </nav>
   );
 }

@@ -556,11 +556,11 @@
 }
 
 .faq-back {
-    position: absolute;
-    top: 100px;
-    left: 24px;
+    position: fixed;
+    top: 72px;
+    left: 20px;
 
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.18);
     color: white;
 
@@ -572,10 +572,17 @@
 
     backdrop-filter: blur(6px);
     transition: all 0.25s ease;
+    z-index: 3000;
+}
+
+@media (max-width: 768px) {
+    .faq-back {
+        top: 68px;
+        left: 20px;}
 }
 
 .faq-back:hover {
-    background: rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.55);
     transform: translateY(-1px);
 }
 
@@ -682,7 +689,7 @@
     }
 
     .faq-page {
-        padding: 100px 18px 60px;
+        padding: 140px 18px 60px;
     }
 
     .faq-question {
