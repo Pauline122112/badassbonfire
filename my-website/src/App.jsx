@@ -31,9 +31,18 @@ function Navbar({ onOpenBooking }) {
     <nav
       className={`navbar ${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}
     >
-      <div className="logo">
-        <img src="/BadassLogo1.png" alt="Badass Bonfires logo" />
-      </div>
+     <div
+        className="logo"
+        onClick={() => {
+          if (window.location.pathname !== "/") {
+            window.location.href = "/";
+          } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+  }}
+>
+  <img src="/BadassLogo1.png" alt="Badass Bonfires logo" />
+</div>
 
       <button
         className={`menu-toggle ${menuOpen ? "open" : ""}`}
@@ -80,14 +89,18 @@ function Navbar({ onOpenBooking }) {
 function HomePage() {
   const [isBookingOpen, setIsBookingOpen] = useState(false)
   const [showTopButton, setShowTopButton] = useState(false)
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowTopButton(window.scrollY > 300);
-    };
+  const [showMobileCta, setShowMobileCta] = useState(false)
+ useEffect(() => {
+  const handleScroll = () => {
+    setShowTopButton(window.scrollY > 300);
+    setShowMobileCta(window.scrollY > 350);
+  };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [])
+  window.addEventListener("scroll", handleScroll);
+  handleScroll();
+
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
 
   return (
     <div className="site-shell">
@@ -151,6 +164,10 @@ function HomePage() {
 >
   ↑
 </button>
+<a href="#contact"
+  className={`mobile-cta ${showMobileCta ? "show" : ""}`}
+>Check Availability
+</a>
     </div>
   );
 }
