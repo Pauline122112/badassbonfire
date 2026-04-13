@@ -1,5 +1,5 @@
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import "./index.css";
 import Services from "./components/Services";
 import BookingModal from "./components/BookingModal";
@@ -7,6 +7,9 @@ import BookingForm from "./components/BookingForm";
 import ReelShowcase from "./components/ReelShowcase";
 import Gallery from "./components/Gallery";
 import { useEffect, useState } from "react";
+import FAQ from "./components/FAQ";
+import ScrollToTop from "./ScrollToTop";
+
 
 function Navbar({ onOpenBooking }) {
   const [scrolled, setScrolled] = useState(false);
@@ -52,11 +55,11 @@ function Navbar({ onOpenBooking }) {
     </button>
   )}
 
-  <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
-  <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
-  <a href="/gallery" onClick={() => setMenuOpen(false)}>Gallery</a>
-  <a href="#reviews" onClick={() => setMenuOpen(false)}>Reviews</a>
-  <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+<a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+<a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+<Link to="/gallery" onClick={() => setMenuOpen(false)}>Gallery</Link>
+<a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+<Link to="/faq" onClick={() => setMenuOpen(false)}>FAQ</Link>
 
   <button
     className="nav-cta"
@@ -155,9 +158,14 @@ function GalleryPage() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/gallery" element={<GalleryPage />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/faq" element={<FAQ />} />
+      </Routes>
+    </>
   );
 }
