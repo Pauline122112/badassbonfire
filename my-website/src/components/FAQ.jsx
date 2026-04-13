@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const faqItems = [
   {
@@ -49,7 +50,8 @@ const faqItems = [
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState(null)
+  const navigate = useNavigate()
 
   const toggleItem = (index) => {
     setOpenIndex((prev) => (prev === index ? null : index));
@@ -57,6 +59,9 @@ export default function FAQ() {
 
   return (
     <section className="faq-page">
+        <button
+            className="faq-back"onClick={() => navigate(-1)}> ← Back
+    </button>
       <div className="faq-hero">
         <p className="faq-eyebrow">Frequently Asked Questions</p>
         <h1>Everything You Need to Know</h1>

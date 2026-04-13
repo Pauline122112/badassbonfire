@@ -8,7 +8,9 @@ import ReelShowcase from "./components/ReelShowcase";
 import Gallery from "./components/Gallery";
 import { useEffect, useState } from "react";
 import FAQ from "./components/FAQ";
-import ScrollToTop from "./ScrollToTop";
+import ScrollToTop from "./components/ScrollToTop";
+import "./styles/layout.css";
+import "./styles/navbar.css";
 
 
 function Navbar({ onOpenBooking }) {
