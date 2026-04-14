@@ -107,12 +107,13 @@ function HomePage() {
       <main className="hero">
         <video
           className="hero-bg"
-          src="/videos/Badassbonfire_homepage.mp4"
           autoPlay
           muted
           loop
           playsInline
-        />
+        >
+          <source src="/videos/homepage.mp4" type="video/mp4" />
+        </video>
         <div className="overlay"></div>
 
         <Navbar onOpenBooking={() => setIsBookingOpen(true)} />
