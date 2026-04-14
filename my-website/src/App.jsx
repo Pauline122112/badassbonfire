@@ -105,10 +105,13 @@ function HomePage() {
   return (
     <div className="site-shell">
       <main className="hero">
-        <img
-          src="/BadassBon1.png"
-          alt="Beach bonfire"
+        <video
           className="hero-bg"
+          src="/videos/Badassbonfire_homepage.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
         />
         <div className="overlay"></div>
 
