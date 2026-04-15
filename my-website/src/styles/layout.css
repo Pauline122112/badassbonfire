@@ -95,16 +95,52 @@
 
 @media (min-width: 768px) {
     .hero-copy {
-        top: 32%;
-        /* 👈 slightly lower toward flame */
-        width: min(90%, 700px);
-        /* 👈 controlled width */
+        position: absolute;
+        top: 27%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+        text-align: center;
+        width: min(90%, 760px);
     }
 
     .hero-copy h1 {
-        font-size: 3.2rem;
-        /* 👈 bigger, but not massive */
-        line-height: 1.05;
+        margin: 0;
+        font-size: 3.15rem;
+        line-height: 0.98;
+        letter-spacing: 0.01em;
+        color: white;
+        text-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-copy p {
+        margin-top: 14px;
+        font-size: 0.95rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: white;
+        text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-cta {
+        position: absolute;
+        left: 50%;
+        bottom: 10%;
+        transform: translateX(-50%);
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        width: min(90%, 420px);
+    }
+
+    .price {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+        text-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
     }
 }
 

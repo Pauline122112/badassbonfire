@@ -119,7 +119,7 @@ function HomePage() {
 
         <Navbar onOpenBooking={() => setIsBookingOpen(true)} />
 
-        <div className="hero-copy">
+ <div className="hero-copy">
   <h1>
     Luxury Beach
     <br />
