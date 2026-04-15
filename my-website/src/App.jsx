@@ -111,6 +111,7 @@ function HomePage() {
           muted
           loop
           playsInline
+          preload="auto"
         >
           <source src="/videos/homepage.mp4" type="video/mp4" />
         </video>
@@ -118,16 +119,24 @@ function HomePage() {
 
         <Navbar onOpenBooking={() => setIsBookingOpen(true)} />
 
-        <div className="hero-content">
-          <h1>Luxury Beach Bonfire Experience starting from $325</h1>
-          <p>On the Emerald Coast</p>
-          <button
-            className="hero-btn"
-            onClick={() => setIsBookingOpen(true)}
-          >
-            Book Your Experience
-          </button>
-        </div>
+        <div className="hero-copy">
+  <h1>
+    Luxury Beach
+    <br />
+    Bonfire Experience
+  </h1>
+  <p>On the Emerald Coast</p>
+</div>
+
+<div className="hero-cta">
+  <p className="price">Starting from $325</p>
+  <button
+    className="hero-btn"
+    onClick={() => setIsBookingOpen(true)}
+  >
+    Book Your Experience
+  </button>
+</div>
       </main>
 
       
