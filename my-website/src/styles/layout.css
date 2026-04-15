@@ -93,6 +93,22 @@
         
 }
 
+@media (min-width: 768px) {
+    .hero-copy {
+        top: 32%;
+        /* 👈 slightly lower toward flame */
+        width: min(90%, 700px);
+        /* 👈 controlled width */
+    }
+
+    .hero-copy h1 {
+        font-size: 3.2rem;
+        /* 👈 bigger, but not massive */
+        line-height: 1.05;
+    }
+}
+
+
 .content-section {
     padding: 80px 20px;
     display: flex;
