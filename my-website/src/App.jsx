@@ -119,7 +119,7 @@ function HomePage() {
 
         <Navbar onOpenBooking={() => setIsBookingOpen(true)} />
 
- <div className="hero-copy">
+<div className="hero-copy">
   <h1>
     Luxury Beach
     <br />
@@ -167,7 +167,7 @@ function HomePage() {
       <section className="content-section" id="about">
         <div className="section-card">
           <h2>About</h2>
-          <p>With a passion for creating unforgettable moments, Badass Bonfires is a proud Veteran and locally owned business, we're dedicated to delivering elevated beach experiences along Destin and the Emerald Coast.<br></br><br></br> We take pride in every detail, offering a seamless, fully managed setup backed by our Satisfaction Guarantee—so your experience exceeds expectations from start to finish.<br></br><br></br>Our private, reservation-based experiences are designed to bring warmth, connection, and effortless luxury to any occasion. Whether it’s a relaxed evening under the stars or a celebration with friends and family, you can count on us for exceptional service, thoughtful design, and a truly memorable atmosphere.</p>
+          <p>With a passion for creating unforgettable moments, Badass Bonfires is a proud veteran- and locally owned business dedicated to delivering elevated beach experiences along Destin and the Emerald Coast.<br></br><br></br>We take pride in every detail, offering a seamless, fully managed setup backed by our Satisfaction Guarantee, so your experience exceeds expectations from start to finish.<br></br><br></br>Our private, reservation-based experiences are designed to bring warmth, connection, and effortless luxury to any occasion. Whether it’s a relaxed evening under the stars or a celebration with friends and family, you can count on us for exceptional service, thoughtful design, and a truly memorable atmosphere.</p>
         </div>
       </section>
       <button
