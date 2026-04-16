@@ -47,7 +47,7 @@
 
 .hero-copy {
     position: absolute;
-    top: 30%;
+    top: 12%;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -76,7 +76,7 @@
 
 .hero-cta {
     position: absolute;
-    top: 70%;
+    top: 82%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 3;
@@ -639,7 +639,8 @@
 @media (max-width: 768px) {
     .faq-back {
         top: 68px;
-        left: 20px;}
+        left: 20px;
+    }
 }
 
 .faq-back:hover {
