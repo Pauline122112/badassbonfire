@@ -165,6 +165,7 @@
 .packages-container {
     max-width: 1200px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .section-eyebrow {
@@ -173,6 +174,9 @@
     letter-spacing: 0.22em;
     font-size: 0.85rem;
     color: #d8b98b;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
 }
 
 .packages-section h2 {
@@ -183,13 +187,22 @@
 }
 
 .section-intro {
-    max-width: 760px;
-    margin: 18px 0 0;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-bottom: 40px;
     color: rgba(255, 255, 255, 0.72);
     font-size: 1.05rem;
     line-height: 1.8;
+    text-align: center;
 }
 
+.packages-container h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.2;
+    max-width: 800px;
+    margin: 0 auto 16px;
+    margin-bottom: 16px;
+}
 .packages-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -333,31 +346,35 @@
     .card-toggle {
         position: absolute;
         inset: 0;
-        z-index: 2;
+        z-index: 6;
         background: transparent;
         border: none;
         padding: 0;
         cursor: pointer;
     }
 
+    .package-content {
+        padding: 26px 26px 76px;
+    }
+
     .package-card.active .card-toggle {
         pointer-events: none;
     }
 
-    .tap-hint {
-        position: absolute;
-        bottom: 16px;
-        right: 16px;
-        background: rgba(0, 0, 0, 0.6);
-        color: white;
-        font-size: 0.8rem;
-        padding: 6px 10px;
-        border-radius: 999px;
-        backdrop-filter: blur(6px);
-        z-index: 3;
-        opacity: 1;
+    .package-card:hover img,
+    .package-card:focus img,
+    .package-card:active img {
+        transform: none;
+        filter: none;
+    }
+
+    .package-card:hover,
+    .package-card:focus,
+    .package-card:active {
+        transform: none;
     }
 }
+
 
 .package-overlay .package-button {
     margin-top: 20px;
@@ -862,4 +879,9 @@
     .mobile-cta:hover {
         background: rgba(0, 0, 0, 0.7);
     }
+    .back-to-top {
+    left: 16px;
+    right: auto;
+    bottom: 16px;
+}
 }

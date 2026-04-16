@@ -4,6 +4,10 @@ export default function Services({ onOpenBooking }) {
   const [activeCard, setActiveCard] = useState(null);
   const [dismissedCard, setDismissedCard] = useState(null);
 
+  const supportsHover =
+    typeof window !== "undefined" &&
+    window.matchMedia("(hover: hover)").matches;
+
   const toggleCard = (index) => {
     setDismissedCard(null);
     setActiveCard((prev) => (prev === index ? null : index));
@@ -36,11 +40,11 @@ export default function Services({ onOpenBooking }) {
   return (
     <section id="services" className="packages-section">
       <div className="packages-container">
-        <p className="section-eyebrow">Services</p>
-        <h2>Choose Your Beach Bonfire Experience</h2>
+        <p className="section-eyebrow">Experiences</p>
+        <h2>Your Beach Bonfire Experience Awaits</h2>
         <p className="section-intro">
-          From cozy evenings to larger group gatherings, we create styled beach
-          bonfire setups that are ready when you arrive.
+          Choose your preferred bonfire package and we’ll take care of the rest,
+          handling every detail so you can arrive, relax, and enjoy.
         </p>
 
         <div className="packages-grid">
@@ -52,13 +56,15 @@ export default function Services({ onOpenBooking }) {
                 ${activeCard === index ? "active" : ""} 
                 ${dismissedCard === index ? "dismissed" : ""}`}
               onMouseEnter={() => {
-                if (dismissedCard !== index) {
+                if (supportsHover && dismissedCard !== index) {
                   setActiveCard(index);
                 }
               }}
               onMouseLeave={() => {
-                setActiveCard(null);
-                setDismissedCard(null);
+                if (supportsHover) {
+                  setActiveCard(null);
+                  setDismissedCard(null);
+                }
               }}
             >
               <img src="/BadassBon1.png" alt={pkg.title} />
@@ -69,9 +75,7 @@ export default function Services({ onOpenBooking }) {
                 onClick={() => toggleCard(index)}
                 aria-expanded={activeCard === index}
                 aria-label={`Show details for ${pkg.title}`}
-              >
-                <span className="tap-hint">Tap for details</span>
-              </button>
+              ></button>
 
               <div className="package-content">
                 <div className="package-price">{pkg.price}</div>

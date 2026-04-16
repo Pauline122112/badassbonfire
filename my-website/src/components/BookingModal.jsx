@@ -15,7 +15,6 @@ export default function BookingModal({ isOpen, onClose }) {
           ×
         </button>
 
-        <p className="booking-eyebrow">Reserve Your Date</p>
         <h2>Check Availability</h2>
         <p className="booking-subtext">
           Choose your preferred details below and we’ll call or text to confirm

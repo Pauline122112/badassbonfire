@@ -145,7 +145,6 @@ function HomePage() {
 <ReelShowcase />
       <section className="content-section" id="contact">
         <div className="section-card booking-section">
-          <p className="booking-eyebrow">Reserve Your Date</p>
             <h2>Check Availability</h2>
           <p className="booking-subtext">
             Choose your preferred details below and we’ll call or text to confirm
