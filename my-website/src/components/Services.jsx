@@ -37,6 +37,21 @@ export default function Services({ onOpenBooking }) {
     },
   ];
 
+  const extras = [
+    {
+      title: "Bonfire Extras",
+      subtitle: "Add-ons available",
+      price: "Optional",
+      image: "/BadassBon1.png",
+    },
+    {
+      title: "Food Catering",
+      subtitle: "Available on request",
+      price: "Optional",
+      image: "/BadassBon1.png",
+    },
+  ];
+
   return (
     <section id="services" className="packages-section">
       <div className="packages-container">
@@ -114,6 +129,28 @@ export default function Services({ onOpenBooking }) {
                   }}
                 >
                   Check Availability
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="packages-grid">
+          {extras.map((item) => (
+            <div key={item.title} className="package-card extra-package-card">
+              <img src={item.image} alt={item.title} />
+
+              <div className="package-content">
+                <div className="package-price">{item.price}</div>
+                <h3>{item.title}</h3>
+                <p>{item.subtitle}</p>
+
+                <button
+                  type="button"
+                  className="package-button"
+                  onClick={onOpenBooking}
+                >
+                  Learn More
                 </button>
               </div>
             </div>

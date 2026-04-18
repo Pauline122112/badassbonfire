@@ -57,7 +57,7 @@ function Navbar({ onOpenBooking }) {
 
       <div className={`nav-links ${menuOpen ? "open" : ""}`}>
         <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
-        <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+        <a href="#services" onClick={() => setMenuOpen(false)}>Experiences</a>
         <Link to="/gallery" onClick={() => setMenuOpen(false)}>Gallery</Link>
         <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
         <Link to="/faq" onClick={() => setMenuOpen(false)}>FAQ</Link>
