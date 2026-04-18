@@ -24,8 +24,11 @@ export default function BookingModal({ isOpen, onClose }) {
         <BookingForm />
 
         <a href="tel:8507061325" className="call-button">
-    <span>📞</span> Prefer to book by phone? Call now
-</a>
+          <span className="call-text">
+            <span>Prefer to book by phone?</span>
+            <span className="call-now">CALL NOW</span>
+          </span>
+        </a>
       </div>
     </div>
   );

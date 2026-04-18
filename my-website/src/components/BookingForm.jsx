@@ -57,6 +57,8 @@ export default function BookingForm() {
           <input type="number" min="1" placeholder="How many guests?" />
         </div>
 
+      
+
         <div className="booking-field">
           <label>Location</label>
           <input type="text" placeholder="Destin, 30A, Rosemary, etc." />

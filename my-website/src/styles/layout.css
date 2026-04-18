@@ -458,12 +458,14 @@
     margin: 0;
     font-size: clamp(2rem, 4vw, 3rem);
     line-height: 1.05;
+    text-align: center;
 }
 
 .booking-subtext {
     margin: 16px 0 28px;
     color: rgba(255, 255, 255, 0.72);
     line-height: 1.7;
+    text-align: center;
 }
 
 .booking-form {
@@ -490,9 +492,35 @@
 }
 
 .booking-field input,
-.booking-field select,
+.booking-field select {
+    width: 100%;
+    height: 58px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #1a1a1a;
+    color: white;
+    border-radius: 16px;
+    padding: 0 16px;
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.booking-field select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    padding-right: 42px;
+
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23d8b98b' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l5 5 5-5'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+}
+
 .booking-field textarea {
     width: 100%;
+    min-height: 140px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: #1a1a1a;
     color: white;
@@ -500,6 +528,25 @@
     padding: 14px 16px;
     font-size: 1rem;
     outline: none;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.booking-field input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    height: 58px;
+    min-height: 58px;
+    padding: 0 16px;
+    line-height: normal;
+    color: white;
+}
+
+/* keeps the calendar icon gold */
+.booking-field input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(78%) sepia(20%) saturate(500%) hue-rotate(5deg);
+    opacity: 0.9;
+    cursor: pointer;
 }
 
 .booking-field input:focus,
@@ -515,11 +562,12 @@
     background: rgba(255, 255, 255, 0.06);
     color: rgba(255, 255, 255, 0.75);
     line-height: 1.6;
+    text-align: center;
 }
 
 .booking-submit {
     margin-top: 8px;
-    align-self: flex-start;
+    align-self: center;
     padding: 15px 24px;
     border: none;
     border-radius: 999px;
@@ -534,21 +582,44 @@
 }
 
 .call-button {
-    display: inline-flex;
-    align-items: center;
+    display: flex;
     justify-content: center;
-    margin-top: 22px;
+    align-items: center;
+
+    width: fit-content;
+    margin: 22px auto 0;
     position: relative;
-    padding: 12px 18px;
+
+    padding: 16px 32px;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    color: rgba(255, 255, 255, 0.85);
+
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
+
     background: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(6px);
-    transition: all 0.25s ease;
+}
+
+/* stack + center text */
+.call-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.call-text span:first-child {
+    font-size: 1rem;
+}
+
+.call-now {
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    margin-top: 4px;
+    color: #d8b98b;
 }
 
 .call-button:hover {
