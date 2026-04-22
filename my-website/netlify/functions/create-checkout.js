@@ -1,4 +1,3 @@
-/* global process */
 import Stripe from "stripe";
 import { Resend } from "resend";
 
