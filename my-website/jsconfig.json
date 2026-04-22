@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "exclude": ["node_modules"],
+  "include": ["netlify/functions/**/*.js"]
+}

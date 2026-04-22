@@ -1,6 +1,9 @@
+/* global process */
 import Stripe from "stripe";
+import { Resend } from "resend";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function handler(event) {
 	try {
@@ -37,7 +40,6 @@ export async function handler(event) {
 		const session = await stripe.checkout.sessions.create({
 			payment_method_types: ["card"],
 			mode: "payment",
-
 			line_items: [
 				{
 					price_data: {
@@ -57,12 +59,9 @@ export async function handler(event) {
 					quantity: 1,
 				},
 			],
-
 			success_url: "https://badassbonfirepreview.netlify.app/success",
 			cancel_url: "https://badassbonfirepreview.netlify.app/",
-
 			customer_email: email,
-
 			metadata: {
 				name,
 				phone,
@@ -71,6 +70,22 @@ export async function handler(event) {
 				package: packageName,
 				paymentType: paymentOption,
 			},
+		});
+
+		await resend.emails.send({
+			from: "Badass Bonfires <onboarding@resend.dev>",
+			to: "badassbonfire@gmail.com",
+			subject: "🔥 New Bonfire Booking",
+			html: `
+        <h2>New Booking Request</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Date:</strong> ${date}</p>
+        <p><strong>Time:</strong> ${time}</p>
+        <p><strong>Package:</strong> ${packageName}</p>
+        <p><strong>Payment Option:</strong> ${paymentOption}</p>
+      `,
 		});
 
 		return {
