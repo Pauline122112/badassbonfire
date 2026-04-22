@@ -36,6 +36,7 @@ export async function handler(event) {
 
 		const amount = paymentOption === "full" ? packagePrice : depositAmount;
 
+		// ✅ Create Stripe Checkout session
 		const session = await stripe.checkout.sessions.create({
 			payment_method_types: ["card"],
 			mode: "payment",
@@ -71,37 +72,39 @@ export async function handler(event) {
 			},
 		});
 
-	try {
-		const emailResult = await resend.emails.send({
-			from: "Badass Bonfires <onboarding@resend.dev>",
-			to: "pauline.stokes007@gmail.com",
-			subject: "🔥 New Bonfire Booking",
-			html: `
-      <h2>New Booking Request</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Phone:</strong> ${phone}</p>
-      <p><strong>Date:</strong> ${date}</p>
-      <p><strong>Time:</strong> ${time}</p>
-      <p><strong>Package:</strong> ${packageName}</p>
-      <p><strong>Payment Option:</strong> ${paymentOption}</p>
-    `,
-		});
+		// ✅ Send email via Resend
+		try {
+			const emailResult = await resend.emails.send({
+				from: "Badass Bonfires <onboarding@resend.dev>",
+				to: "pauline.dev007@gmail.com", // ✅ your working test email
+				subject: "TEST BOOKING EMAIL 123",
+				html: `
+          <h2>🔥 New Booking Request</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Date:</strong> ${date}</p>
+          <p><strong>Time:</strong> ${time}</p>
+          <p><strong>Package:</strong> ${packageName}</p>
+          <p><strong>Payment Option:</strong> ${paymentOption}</p>
+        `,
+			});
 
-		console.log("Resend success:", emailResult);
-	} catch (emailError) {
-		console.error("Resend email failed:", emailError);
-	}
+			console.log("Resend success:", emailResult);
+		} catch (emailError) {
+			console.error("Resend email failed:", emailError);
+		}
+
 		return {
 			statusCode: 200,
 			body: JSON.stringify({ url: session.url }),
 		};
 	} catch (err) {
-		console.error(err);
+		console.error("Stripe error:", err);
 
 		return {
 			statusCode: 500,
-			body: JSON.stringify({ error: "Stripe error" }),
+			body: JSON.stringify({ error: "Something went wrong" }),
 		};
 	}
 }
