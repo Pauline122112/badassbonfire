@@ -17,9 +17,12 @@ export async function handler(event) {
 			package: packageName,
 			paymentOption,
 			guestCount,
+			guests,
 			location,
 			notes,
 		} = data;
+
+		const finalGuestCount = guestCount || guests || "";
 
 		let packagePrice = 0;
 
@@ -72,7 +75,7 @@ export async function handler(event) {
 				time,
 				package: packageName,
 				paymentType: paymentOption,
-				guestCount: guestCount || "",
+				guestCount: finalGuestCount,
 				location: location || "",
 				notes: notes || "",
 			},
@@ -92,7 +95,7 @@ export async function handler(event) {
           <p><strong>Time:</strong> ${time}</p>
           <p><strong>Package:</strong> ${packageName}</p>
           <p><strong>Payment Option:</strong> ${paymentOption}</p>
-          <p><strong>Guest Count:</strong> ${guestCount || ""}</p>
+          <p><strong>Guest Count:</strong> ${finalGuestCount}</p>
           <p><strong>Location:</strong> ${location || ""}</p>
           <p><strong>Notes:</strong> ${notes || ""}</p>
         `,
