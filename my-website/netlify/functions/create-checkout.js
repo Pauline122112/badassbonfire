@@ -16,6 +16,9 @@ export async function handler(event) {
 			time,
 			package: packageName,
 			paymentOption,
+			guestCount,
+			location,
+			notes,
 		} = data;
 
 		let packagePrice = 0;
@@ -36,7 +39,6 @@ export async function handler(event) {
 
 		const amount = paymentOption === "full" ? packagePrice : depositAmount;
 
-		// ✅ Create Stripe Checkout session
 		const session = await stripe.checkout.sessions.create({
 			payment_method_types: ["card"],
 			mode: "payment",
@@ -64,19 +66,22 @@ export async function handler(event) {
 			customer_email: email,
 			metadata: {
 				name,
+				email,
 				phone,
 				date,
 				time,
 				package: packageName,
 				paymentType: paymentOption,
+				guestCount: guestCount || "",
+				location: location || "",
+				notes: notes || "",
 			},
 		});
 
-		// ✅ Send email via Resend
 		try {
 			const emailResult = await resend.emails.send({
 				from: "Badass Bonfires <onboarding@resend.dev>",
-				to: "pauline.dev007@gmail.com", // ✅ your working test email
+				to: "pauline.dev007@gmail.com",
 				subject: "TEST BOOKING EMAIL 123",
 				html: `
           <h2>🔥 New Booking Request</h2>
@@ -87,6 +92,9 @@ export async function handler(event) {
           <p><strong>Time:</strong> ${time}</p>
           <p><strong>Package:</strong> ${packageName}</p>
           <p><strong>Payment Option:</strong> ${paymentOption}</p>
+          <p><strong>Guest Count:</strong> ${guestCount || ""}</p>
+          <p><strong>Location:</strong> ${location || ""}</p>
+          <p><strong>Notes:</strong> ${notes || ""}</p>
         `,
 			});
 
