@@ -109,7 +109,7 @@ export async function handler(event) {
 			const customerEmail = await resend.emails.send({
 				from: "Badass Bonfires <onboarding@resend.dev>",
 				to: email,
-				subject: "🔥 Your Bonfire Request Has Been Received",
+				subject: `CUSTOMER TEST ${Date.now()}`,
 				html: `
           <h2>You're Booked (Almost) 🔥</h2>
           <p>Hi ${name},</p>
