@@ -6,38 +6,70 @@ export async function handler(event) {
 	try {
 		const data = JSON.parse(event.body);
 
-		const { name, email, phone, eventDate, packageName, packagePrice } = data;
+		const {
+			name,
+			email,
+			phone,
+			date,
+			time,
+			package: packageName,
+			paymentOption,
+		} = data;
 
-		// 💰 SET YOUR DEPOSIT HERE
-		const depositAmount = 15000; // $150 in cents
+		let packagePrice = 0;
+
+		if (packageName.includes("Couples Burn")) packagePrice = 32500;
+		if (packageName.includes("Basic Bonfire")) packagePrice = 42500;
+		if (packageName.includes("Popular Bonfire")) packagePrice = 52500;
+		if (packageName.includes("Elite Bonfire")) packagePrice = 62500;
+
+		const depositAmount = 16000;
+
+		if (!packagePrice) {
+			return {
+				statusCode: 400,
+				body: JSON.stringify({ error: "Invalid package selected" }),
+			};
+		}
+
+		const amount = paymentOption === "full" ? packagePrice : depositAmount;
 
 		const session = await stripe.checkout.sessions.create({
+			payment_method_types: ["card"],
 			mode: "payment",
-			customer_email: email,
-
-			success_url: `${process.env.URL}/booking-success`,
-			cancel_url: `${process.env.URL}/booking-cancelled`,
 
 			line_items: [
 				{
 					price_data: {
 						currency: "usd",
 						product_data: {
-							name: `${packageName} Deposit`,
-							description: `Date: ${eventDate}`,
+							name:
+								paymentOption === "full"
+									? `${packageName} - Full Payment`
+									: `${packageName} - $160 Permit Deposit`,
+							description:
+								paymentOption === "full"
+									? `Full payment for bonfire on ${date} at ${time}`
+									: `Permit deposit for bonfire on ${date} at ${time}. Deposit becomes non-refundable once permit is pulled.`,
 						},
-						unit_amount: depositAmount,
+						unit_amount: amount,
 					},
 					quantity: 1,
 				},
 			],
 
+			success_url: "https://badassbonfirepreview.netlify.app/success",
+			cancel_url: "https://badassbonfirepreview.netlify.app/",
+
+			customer_email: email,
+
 			metadata: {
 				name,
 				phone,
-				eventDate,
-				packageName,
-				packagePrice,
+				date,
+				time,
+				package: packageName,
+				paymentType: paymentOption,
 			},
 		});
 
@@ -54,4 +86,3 @@ export async function handler(event) {
 		};
 	}
 }
-›

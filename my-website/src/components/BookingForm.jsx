@@ -1,48 +1,37 @@
 import { useState } from "react";
 
-const PACKAGE_PRICES = {
-  "The Cozy Bonfire": 429,
-  "The Sunset Circle": 529,
-  "The Shoreline Social": 729,
-  "The Bonfire Bash": 969,
-};
-
 export default function BookingForm() {
+  const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
-    preferredDate: "",
-    preferredTime: "",
-    packageName: "",
-    guestCount: "",
+    date: "",
+    time: "",
+    package: "",
+    guests: "",
     location: "",
     notes: "",
-    policyAccepted: false,
-    permitAccepted: false,
     paymentOption: "deposit",
+    permitAccepted: false,
+    policyAccepted: false,
   });
 
-  const [loading, setLoading] = useState(false);
-
-  function handleChange(e) {
+  const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  }
 
-  async function handleSubmit(e) {
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.policyAccepted || !formData.permitAccepted) {
-      alert("Please agree to the booking terms before continuing.");
-      return;
-    }
-
-    if (!formData.packageName) {
-      alert("Please select a package.");
+    if (!formData.permitAccepted || !formData.policyAccepted) {
+      alert("Please accept the permit and cancellation policy.");
       return;
     }
 
@@ -51,67 +40,46 @@ export default function BookingForm() {
     try {
       const res = await fetch("/.netlify/functions/create-checkout", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-          eventDate: formData.preferredDate,
-          preferredTime: formData.preferredTime,
-          packageName: formData.packageName,
-          packagePrice: PACKAGE_PRICES[formData.packageName],
-          guestCount: formData.guestCount,
-          location: formData.location,
-          notes: formData.notes,
-          paymentOption: formData.paymentOption,
-        }),
+        body: JSON.stringify(formData),
       });
 
       const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data.error || "Unable to start checkout.");
-      }
-
       if (data.url) {
         window.location.href = data.url;
       } else {
-        throw new Error("No checkout URL returned.");
+        alert("Something went wrong. Please try again.");
       }
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong starting checkout.");
-    } finally {
-      setLoading(false);
+    } catch (err) {
+      console.error(err);
+      alert("Error processing booking.");
     }
-  }
+
+    setLoading(false);
+  };
 
   return (
     <form className="booking-form" onSubmit={handleSubmit}>
+      
+      {/* BASIC INFO */}
       <div className="booking-grid">
         <div className="booking-field">
           <label>Name</label>
           <input
-            type="text"
             name="name"
-            placeholder="Your name"
-            value={formData.name}
             onChange={handleChange}
             required
+            placeholder="Your name"
           />
         </div>
 
         <div className="booking-field">
           <label>Phone</label>
           <input
-            type="tel"
             name="phone"
-            placeholder="Best number to reach you"
-            value={formData.phone}
             onChange={handleChange}
             required
+            placeholder="Best number to reach you"
           />
         </div>
       </div>
@@ -120,12 +88,10 @@ export default function BookingForm() {
         <div className="booking-field">
           <label>Email</label>
           <input
-            type="email"
             name="email"
-            placeholder="you@example.com"
-            value={formData.email}
             onChange={handleChange}
             required
+            placeholder="you@example.com"
           />
         </div>
 
@@ -133,8 +99,7 @@ export default function BookingForm() {
           <label>Preferred Date</label>
           <input
             type="date"
-            name="preferredDate"
-            value={formData.preferredDate}
+            name="date"
             onChange={handleChange}
             required
           />
@@ -144,13 +109,8 @@ export default function BookingForm() {
       <div className="booking-grid">
         <div className="booking-field">
           <label>Preferred Time</label>
-          <select
-            name="preferredTime"
-            value={formData.preferredTime}
-            onChange={handleChange}
-            required
-          >
-            <option value="" disabled>Select a time</option>
+          <select name="time" onChange={handleChange} required>
+            <option value="">Select a time</option>
             <option>5:30 PM</option>
             <option>6:00 PM</option>
             <option>6:30 PM</option>
@@ -162,17 +122,12 @@ export default function BookingForm() {
 
         <div className="booking-field">
           <label>Package</label>
-          <select
-            name="packageName"
-            value={formData.packageName}
-            onChange={handleChange}
-            required
-          >
-            <option value="" disabled>Select a package</option>
-            <option>The Cozy Bonfire</option>
-            <option>The Sunset Circle</option>
-            <option>The Shoreline Social</option>
-            <option>The Bonfire Bash</option>
+          <select name="package" onChange={handleChange} required>
+            <option value="">Select a package</option>
+            <option>Couples Burn ($325)</option>
+            <option>Basic Bonfire ($425)</option>
+            <option>Popular Bonfire ($525)</option>
+            <option>Elite Bonfire ($625)</option>
           </select>
         </div>
       </div>
@@ -181,25 +136,20 @@ export default function BookingForm() {
         <div className="booking-field">
           <label>Guest Count</label>
           <input
+            name="guests"
             type="number"
             min="1"
-            name="guestCount"
-            placeholder="How many guests?"
-            value={formData.guestCount}
             onChange={handleChange}
-            required
+            placeholder="How many guests?"
           />
         </div>
 
         <div className="booking-field">
           <label>Location</label>
           <input
-            type="text"
             name="location"
-            placeholder="Destin, 30A, Rosemary, etc."
-            value={formData.location}
             onChange={handleChange}
-            required
+            placeholder="Destin, 30A, Rosemary, etc."
           />
         </div>
       </div>
@@ -207,26 +157,18 @@ export default function BookingForm() {
       <div className="booking-field">
         <label>Anything else we should know?</label>
         <textarea
-          rows="5"
           name="notes"
-          placeholder="Special requests, celebration details, preferred beach access, etc."
-          value={formData.notes}
+          rows="4"
           onChange={handleChange}
+          placeholder="Special requests, celebrations, preferred beach access, etc."
         />
       </div>
 
-      <div className="booking-policy-box">
-        <h3>Booking & Cancellation Policy</h3>
-        <ul>
-          <li>Beach location is subject to permit availability.</li>
-          <li>Your requested date is not guaranteed until payment is completed.</li>
-          <li>Deposits are applied toward your final booking total.</li>
-          <li>Final confirmation and event details will be sent by phone or text.</li>
-        </ul>
-      </div>
+      {/* PAYMENT OPTIONS */}
+      <div className="booking-payment">
+        <h3>Select Payment Option</h3>
 
-      <div className="booking-payment-options">
-        <label className="booking-radio">
+        <label className="payment-option">
           <input
             type="radio"
             name="paymentOption"
@@ -234,10 +176,12 @@ export default function BookingForm() {
             checked={formData.paymentOption === "deposit"}
             onChange={handleChange}
           />
-          <span>Reserve with deposit</span>
+          <span>
+            Reserve with <strong>$160 Permit Deposit</strong>
+          </span>
         </label>
 
-        <label className="booking-radio">
+        <label className="payment-option">
           <input
             type="radio"
             name="paymentOption"
@@ -245,19 +189,33 @@ export default function BookingForm() {
             checked={formData.paymentOption === "full"}
             onChange={handleChange}
           />
-          <span>Pay in full</span>
+          <span>Pay in Full Now</span>
         </label>
       </div>
 
+      {/* POLICY BOX */}
+      <div className="booking-policy-box">
+        <h4>Permit & Booking Policy</h4>
+        <ul>
+          <li>A $160 deposit is required to reserve your bonfire date.</li>
+          <li>This deposit covers the required beach fire permit.</li>
+          <li>Once the permit has been pulled, the $160 deposit is non-refundable.</li>
+          <li>Permits are typically secured about 2 weeks before your event, or sooner if required.</li>
+          <li>The remaining balance will be confirmed separately unless paid in full.</li>
+        </ul>
+      </div>
+
+      {/* REQUIRED CHECKBOXES */}
       <label className="booking-checkbox">
         <input
           type="checkbox"
           name="permitAccepted"
           checked={formData.permitAccepted}
           onChange={handleChange}
+          required
         />
         <span>
-          I understand beach location is subject to permit approval and availability.
+          I understand the $160 payment is a permit deposit required to reserve my bonfire date.
         </span>
       </label>
 
@@ -267,23 +225,27 @@ export default function BookingForm() {
           name="policyAccepted"
           checked={formData.policyAccepted}
           onChange={handleChange}
+          required
         />
         <span>
-          I have read and agree to the booking and cancellation policy.
+          I understand that once the permit has been pulled, the $160 deposit becomes non-refundable.
         </span>
       </label>
 
-      <div className="booking-note">
-        Secure your requested date online and we’ll personally confirm the details by phone or text.
-      </div>
-
+      {/* SUBMIT BUTTON */}
       <button type="submit" className="booking-submit" disabled={loading}>
         {loading
           ? "Redirecting..."
           : formData.paymentOption === "full"
           ? "Continue to Full Payment"
-          : "Reserve with Deposit"}
+          : "Reserve with $160 Deposit"}
       </button>
+
+      {/* NOTE */}
+      <div className="booking-note">
+        Secure your requested date with a permit deposit or pay in full now. We’ll confirm all details personally by phone or text.
+      </div>
+
     </form>
   );
 }
