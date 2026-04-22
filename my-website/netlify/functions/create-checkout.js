@@ -22,6 +22,7 @@ export async function handler(event) {
 			notes,
 		} = data;
 
+		// ✅ Fix guest count (handles both frontend names)
 		const finalGuestCount = guestCount || guests || "";
 
 		let packagePrice = 0;
@@ -42,6 +43,7 @@ export async function handler(event) {
 
 		const amount = paymentOption === "full" ? packagePrice : depositAmount;
 
+		// ✅ Stripe Checkout Session
 		const session = await stripe.checkout.sessions.create({
 			payment_method_types: ["card"],
 			mode: "payment",
@@ -81,11 +83,13 @@ export async function handler(event) {
 			},
 		});
 
+		// ✅ EMAILS
 		try {
-			const emailResult = await resend.emails.send({
+			// 🔔 ADMIN EMAIL (you)
+			const adminEmail = await resend.emails.send({
 				from: "Badass Bonfires <onboarding@resend.dev>",
 				to: "pauline.dev007@gmail.com",
-				subject: "TEST BOOKING EMAIL 123",
+				subject: `🔥 New Booking: ${packageName} (${date})`,
 				html: `
           <h2>🔥 New Booking Request</h2>
           <p><strong>Name:</strong> ${name}</p>
@@ -101,7 +105,33 @@ export async function handler(event) {
         `,
 			});
 
-			console.log("Resend success:", emailResult);
+			// 📩 CUSTOMER EMAIL
+			const customerEmail = await resend.emails.send({
+				from: "Badass Bonfires <onboarding@resend.dev>",
+				to: email,
+				subject: "🔥 Your Bonfire Request Has Been Received",
+				html: `
+          <h2>You're Booked (Almost) 🔥</h2>
+          <p>Hi ${name},</p>
+
+          <p>We received your bonfire request and will contact you shortly to confirm everything.</p>
+
+          <h3>Your Booking Details</h3>
+          <p><strong>Package:</strong> ${packageName}</p>
+          <p><strong>Date:</strong> ${date}</p>
+          <p><strong>Time:</strong> ${time}</p>
+          <p><strong>Guest Count:</strong> ${finalGuestCount}</p>
+          <p><strong>Location:</strong> ${location || "TBD"}</p>
+          <p><strong>Payment Option:</strong> ${paymentOption}</p>
+
+          <p>If anything needs to be updated, just reply to this email.</p>
+
+          <p>🔥 Badass Bonfires</p>
+        `,
+			});
+
+			console.log("Admin email:", adminEmail);
+			console.log("Customer email:", customerEmail);
 		} catch (emailError) {
 			console.error("Resend email failed:", emailError);
 		}
