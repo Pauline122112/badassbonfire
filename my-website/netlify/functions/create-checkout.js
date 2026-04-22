@@ -71,22 +71,27 @@ export async function handler(event) {
 			},
 		});
 
-		await resend.emails.send({
+	try {
+		const emailResult = await resend.emails.send({
 			from: "Badass Bonfires <onboarding@resend.dev>",
-			to: "badassbonfire@gmail.com",
+			to: "pauline.stokes007@gmail.com",
 			subject: "🔥 New Bonfire Booking",
 			html: `
-        <h2>New Booking Request</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Date:</strong> ${date}</p>
-        <p><strong>Time:</strong> ${time}</p>
-        <p><strong>Package:</strong> ${packageName}</p>
-        <p><strong>Payment Option:</strong> ${paymentOption}</p>
-      `,
+      <h2>New Booking Request</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Date:</strong> ${date}</p>
+      <p><strong>Time:</strong> ${time}</p>
+      <p><strong>Package:</strong> ${packageName}</p>
+      <p><strong>Payment Option:</strong> ${paymentOption}</p>
+    `,
 		});
 
+		console.log("Resend success:", emailResult);
+	} catch (emailError) {
+		console.error("Resend email failed:", emailError);
+	}
 		return {
 			statusCode: 200,
 			body: JSON.stringify({ url: session.url }),
