@@ -40,7 +40,10 @@ export default function BookingForm() {
     try {
       const res = await fetch("/.netlify/functions/create-checkout", {
         method: "POST",
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+        ...formData,
+        guestCount: formData.guests, // 🔥 THIS LINE FIXES IT
+    }),
       });
 
       const data = await res.json();
