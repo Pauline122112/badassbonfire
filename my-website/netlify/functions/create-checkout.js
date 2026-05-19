@@ -110,12 +110,14 @@ export async function handler(event) {
 			const customerEmail = await resend.emails.send({
 				from: "Badass Bonfires <onboarding@resend.dev>",
 				to: email,
-				subject: `CUSTOMER TEST ${Date.now()}`,
+				subject: `We Received Your Bonfire Request 🔥`,
 				html: `
-          <h2>You're Booked (Almost) 🔥</h2>
-          <p>Hi ${name},</p>
+  <h2>We Received Your Bonfire Request 🔥</h2>
+  <p>Hi ${name},</p>
 
-          <p>We received your bonfire request and will contact you shortly to confirm everything.</p>
+  <p>Thanks for booking with Badass Bonfires.</p>
+
+  <p>We’ve received your request and payment submission successfully. Our team will review permit availability and contact you shortly with final confirmation details.</p>
 
           <h3>Your Booking Details</h3>
           <p><strong>Package:</strong> ${packageName}</p>
